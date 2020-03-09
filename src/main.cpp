@@ -1,19 +1,15 @@
-#include <iostream>
-
 #include "javascript.hpp"
-
-function add(int a, int b) {
-	return a + b;
-}
 
 int main() {
 	const a=1;
+	const b=2;
 
-	var b=a;
+	let c=a + b;
 
-	let c=b;
+	console.log(c);
 
-	std::cout << add(a, b) << "\n";
+	console.warn("warning");
+	console.error("error");
 
 	return 0;
 }
