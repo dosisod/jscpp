@@ -1,5 +1,9 @@
 #include "javascript.hpp"
 
+function hello() {
+	console.log("hello world!");
+}
+
 int main() {
 	const a=1;
 	const b=2;
@@ -10,6 +14,14 @@ int main() {
 
 	console.warn("warning");
 	console.error("error");
+
+	hello();
+
+	const f=function() {
+		console.log("lambdas!");
+	};
+
+	f();
 
 	return 0;
 }

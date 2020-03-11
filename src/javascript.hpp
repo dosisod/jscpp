@@ -5,3 +5,4 @@
 #define let auto
 
 #define function auto
+#define auto() [=]()
