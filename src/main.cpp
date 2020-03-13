@@ -23,5 +23,7 @@ int main() {
 
 	f();
 
+	console.log(Math.abs(-1));
+
 	return 0;
 }

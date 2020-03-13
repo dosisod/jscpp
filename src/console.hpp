@@ -26,5 +26,3 @@ public:
 		std::cout << RED << data << RESET << "\n";
 	}
 };
-
-Console console;
