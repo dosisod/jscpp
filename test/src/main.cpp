@@ -9,6 +9,17 @@ function add(int a, int b) {
 	return a + b;
 }
 
+//test class keyword
+class Base {
+	Base() {}
+	int num=123;
+};
+
+class Der extends Base {
+	Der() : Base() {}
+	int num=321;
+};
+
 int main() {
 	int hadErrors=0;
 
@@ -113,6 +124,22 @@ int main() {
 
 	assertEqual(Math.trunc(0.001), Math.trunc(0.999));
 	assertEqual(Math.trunc(-0.001), Math.trunc(-0.999));
+
+	//test class code
+	Base base;
+	Der der;
+	assertEqual(base.num, 123);
+	assertEqual(der.num, 321);
+
+	//finally test code
+	try {
+		auto x=0;
+	} catch(...) {
+		assert(false);
+	}
+	finally {
+		//good
+	}
 
 	if (hadErrors) {
 		std::cout << "1 or more errors occurred.\n";
