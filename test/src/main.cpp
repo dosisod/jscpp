@@ -37,6 +37,10 @@ int main() {
 	console.warn("warn");
 	console.error("error");
 
+	console.log("hello", "world!");
+	console.warn("this", "is", "a", "warning");
+	console.error("this", "is", "a", "error");
+
 
 	assertEqual(Math.E, 2.718281828459045);
 	assertEqual(Math.LN10, 2.302585092994046);
