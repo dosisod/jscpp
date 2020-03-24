@@ -6,6 +6,9 @@ Console console;
 #include "math.hpp"
 _Math Math;
 
+#include "string.hpp"
+_String String=_String("");
+
 //allows for const, var, and let
 #define const const auto
 #define var auto
