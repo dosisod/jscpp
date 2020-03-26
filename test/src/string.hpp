@@ -4,6 +4,33 @@
 int testString() {
 	int errors=0;
 
+	// == operator
+	assert(String("abc") == String("abc"));
+
+	// != operator
+	assert(String("abc") != String("def"));
+
+	// + operator
+	const plus=String("abc") + String("def");
+	assert(plus == String("abcdef"));
+
+	// += operator
+	let plus_equal=String("abc");
+	plus_equal+=String("def");
+	assert(plus_equal == String("abcdef"));
+
+	// = operator
+	let equal=String("old value");
+	equal=String("new value");
+	assert(equal == String("new value"));
+
+	// bool operator
+	assert(String("valid")); //truthy
+	assert(!String("")); //falsey
+
+	// stream (<<) operator
+	std::cout << String("testing stream operator...\n");
+
 	assert(String("abc").charAt(1) == 'b');
 	assert(String("─").charAt(0) == U'─');
 
