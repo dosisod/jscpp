@@ -1,5 +1,7 @@
 # jscpp
 
+![](https://github.com/dosisod/jscpp/workflows/tests/badge.svg)
+
 Javascript, in C++
 
 ## Building
