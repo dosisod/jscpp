@@ -1,8 +1,5 @@
+#include "assert.hpp"
 #include "../../src/javascript.hpp"
-
-#define assertEqual(a, b) if (a!=b) {console.log(__LINE__); hadErrors=true;}
-#define assertNotEqual(a, b) if (a==b) hadErrors=true;
-#define assert(x) if (!x) hadErrors=true;
 
 function add(int a, int b) {
 	return a + b;
@@ -17,11 +14,11 @@ class Der extends Base {
 	int num=321;
 };
 
-bool testKeywords() {
-	bool hadErrors=false;
+int testKeywords() {
+	int errors=0;
 
 	//test add function
-	assertEqual( add(1,2), 3 );
+	assert( add(1,2) == 3 );
 
 	//test IIFE capabilities
 	assert( function(){
@@ -31,8 +28,8 @@ bool testKeywords() {
 	//test extends functionality
 	Base base;
 	Der der;
-	assertEqual(base.num, 123);
-	assertEqual(der.num, 321);
+	assert(base.num == 123);
+	assert(der.num == 321);
 
 	//test finally capabilities
 	try {
@@ -44,5 +41,5 @@ bool testKeywords() {
 		//good
 	}
 
-	return hadErrors;
+	return errors;
 }
