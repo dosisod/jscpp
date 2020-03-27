@@ -8,6 +8,7 @@ public:
 
 	//allow String() instance to create more _String's
 	_String operator()(const std::string internal);
+	_String operator()();
 
 	bool operator==(const _String& other) const;
 	bool operator==(const _String& other);
@@ -33,6 +34,15 @@ public:
 	unsigned int charCodeAt(const unsigned int index) const;
 	unsigned int codePointAt(const unsigned int index) const;
 
+	_String concat(std::string str) const {
+		return _String(internal + str);
+	}
+
+	template<typename... Ts>
+	_String concat(Ts... ts) const {
+		return _String(internal + sum(ts...));
+	}
+
 	bool endsWith(const std::string end) const;
 
 	bool includes(const std::string str) const;
@@ -40,7 +50,22 @@ public:
 	int indexOf(const std::string str) const;
 	int lastIndexOf(const std::string str) const;
 
+	_String repeat(const unsigned int count) const;
+
 	bool startsWith(const std::string start) const;
 
+	_String& toString();
+	_String& valueOf();
+
 	std::string internal="";
+
+private:
+	std::string sum(std::string str) const {
+		return str;
+	}
+
+	template<typename... Ts>
+	std::string sum(std::string str, Ts... ts) const {
+		return str + sum(ts...);
+	}
 };

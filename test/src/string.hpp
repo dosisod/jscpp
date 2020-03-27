@@ -5,6 +5,12 @@ int testString() {
 
 int errors=0;
 
+//empty ctor
+{
+	const str=String();
+	assert(str == String(""));
+}
+
 // == operator
 assert(String("abc") == String("abc"));
 
@@ -70,9 +76,14 @@ assert(String("─").charCodeAt(0) == 9472);
 assert(String("𠮷").charCodeAt(0) == 55362);
 assert(String("𠮷").codePointAt(0) == 134071);
 
-assert(String("abc").startsWith("a"));
-assert(String("abc").startsWith(""));
-assert(!String("abc").startsWith("c"));
+{
+	assert(String("abc").concat("def") == String("abcdef"));
+	assert(String("abc").concat("def", "ghi") == String("abcdefghi"));
+
+	const str=String("abc");
+	assert(str.concat("def") == String("abcdef"));
+	assert(str.concat("def", "ghi") == String("abcdefghi"));
+}
 
 assert(String("abc").endsWith("c"));
 assert(String("abc").endsWith(""));
@@ -90,6 +101,17 @@ assert(String("abc").indexOf("abcd") == -1);
 assert(String("abcabc").lastIndexOf("c") == 5);
 assert(String("abc").lastIndexOf("d") == -1);
 assert(String("abc").lastIndexOf("") == 3);
+
+assert(String("a").repeat(3) == String("aaa"));
+assert(String("b").repeat(0) == String(""));
+
+assert(String("abc").startsWith("a"));
+assert(String("abc").startsWith(""));
+assert(!String("abc").startsWith("c"));
+
+assert(String("abc").toString() == String("abc"));
+
+assert(String("abc").valueOf() == String("abc"));
 
 return errors;
 }

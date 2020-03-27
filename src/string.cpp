@@ -4,6 +4,10 @@ _String::_String(const std::string internal) :
 	internal(internal)
 	{}
 
+_String _String::operator()() {
+	return _String("");
+}
+
 _String _String::operator()(const std::string internal) {
 	return _String(internal);
 }
@@ -95,6 +99,24 @@ int _String::lastIndexOf(const std::string str) const {
 	return internal.find_last_of(str);
 }
 
+_String _String::repeat(const unsigned int count) const {
+	_String str=_String("");
+
+	for (unsigned int i=0; i<count; i++) {
+		str+=_String(internal);
+	}
+
+	return str;
+}
+
 bool _String::startsWith(const std::string start) const {
 	return (internal.rfind(start, 0) == 0);
+}
+
+_String& _String::toString() {
+	return *this;
+}
+
+_String& _String::valueOf() {
+	return *this;
 }
