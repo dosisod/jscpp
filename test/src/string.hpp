@@ -2,65 +2,72 @@
 #include "../../src/javascript.hpp"
 
 int testString() {
-	int errors=0;
 
-	// == operator
-	assert(String("abc") == String("abc"));
+int errors=0;
 
-	// != operator
-	assert(String("abc") != String("def"));
+// == operator
+assert(String("abc") == String("abc"));
 
-	// + operator
-	const plus=String("abc") + String("def");
-	assert(plus == String("abcdef"));
+// != operator
+assert(String("abc") != String("def"));
 
-	// += operator
-	let plus_equal=String("abc");
-	plus_equal+=String("def");
-	assert(plus_equal == String("abcdef"));
+// + operator
+{
+	const str=String("abc") + String("def");
+	assert(str == String("abcdef"));
+}
 
-	// = operator
-	let equal=String("old value");
-	equal=String("new value");
-	assert(equal == String("new value"));
+// += operator
+{
+	let str=String("abc");
+	str+=String("def");
+	assert(str == String("abcdef"));
+}
 
-	// bool operator
-	assert(String("valid")); //truthy
-	assert(!String("")); //falsey
+// = operator
+{
+	let str=String("old value");
+	str=String("new value");
+	assert(str == String("new value"));
+}
 
-	// stream (<<) operator
-	std::cout << String("testing stream operator...\n");
+// bool operator
+assert(String("valid")); //truthy
+assert(!String("")); //falsey
 
-	assert(String("abc").charAt(1) == 'b');
-	assert(String("─").charAt(0) == U'─');
+// stream (<<) operator
+std::cout << String("testing stream operator...\n");
 
-	assert(String("a").charCodeAt(0) == 97);
-	assert(String("─").charCodeAt(0) == 9472);
+assert(String("abc").charAt(1) == 'b');
+assert(String("─").charAt(0) == U'─');
 
-	//https://stackoverflow.com/a/43328217
-	assert(String("𠮷").charCodeAt(0) == 55362);
-	assert(String("𠮷").codePointAt(0) == 134071);
+assert(String("a").charCodeAt(0) == 97);
+assert(String("─").charCodeAt(0) == 9472);
 
-	assert(String("abc").startsWith("a"));
-	assert(String("abc").startsWith(""));
-	assert(!String("abc").startsWith("c"));
+//https://stackoverflow.com/a/43328217
+assert(String("𠮷").charCodeAt(0) == 55362);
+assert(String("𠮷").codePointAt(0) == 134071);
 
-	assert(String("abc").endsWith("c"));
-	assert(String("abc").endsWith(""));
-	assert(!String("abc").endsWith("a"));
+assert(String("abc").startsWith("a"));
+assert(String("abc").startsWith(""));
+assert(!String("abc").startsWith("c"));
 
-	assert(String("abc").includes("a"));
-	assert(String("abc").includes(""));
-	assert(String("abc").includes("b"));
-	assert(!String("abc").includes("abcd"));
+assert(String("abc").endsWith("c"));
+assert(String("abc").endsWith(""));
+assert(!String("abc").endsWith("a"));
 
-	assert(String("abc").indexOf("b") == 1);
-	assert(String("abc").indexOf("") == 0);
-	assert(String("abc").indexOf("abcd") == -1);
+assert(String("abc").includes("a"));
+assert(String("abc").includes(""));
+assert(String("abc").includes("b"));
+assert(!String("abc").includes("abcd"));
 
-	assert(String("abcabc").lastIndexOf("c") == 5);
-	assert(String("abc").lastIndexOf("d") == -1);
-	assert(String("abc").lastIndexOf("") == 3);
+assert(String("abc").indexOf("b") == 1);
+assert(String("abc").indexOf("") == 0);
+assert(String("abc").indexOf("abcd") == -1);
 
-	return errors;
+assert(String("abcabc").lastIndexOf("c") == 5);
+assert(String("abc").lastIndexOf("d") == -1);
+assert(String("abc").lastIndexOf("") == 3);
+
+return errors;
 }

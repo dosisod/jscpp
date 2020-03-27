@@ -25,12 +25,16 @@ int testKeywords() {
 		return 1;
 	}() );
 
+{
 	//test extends functionality
 	Base base;
 	Der der;
+
 	assert(base.num == 123);
 	assert(der.num == 321);
+}
 
+{
 	//test finally capabilities
 	try {
 		auto x=0;
@@ -40,6 +44,7 @@ int testKeywords() {
 	finally {
 		//good
 	}
+}
 
 	return errors;
 }
