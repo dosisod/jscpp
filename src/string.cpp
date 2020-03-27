@@ -26,6 +26,10 @@ _String::operator bool() {
 	return internal.length()>0;
 }
 
+_String _String::operator+(const _String& other) const {
+	return _String(internal + other.internal);
+}
+
 _String& _String::operator+(const _String& other) {
 	internal+=other.internal;
 	return *this;
@@ -43,6 +47,10 @@ _String& _String::operator=(const _String& other) {
 
 std::ostream& operator<<(std::ostream& out, const _String& str) {
 	return out << str.internal;
+}
+
+char32_t _String::operator[](const unsigned int index) const {
+	return charAt(index);
 }
 
 char32_t _String::charAt(const unsigned int index) const {

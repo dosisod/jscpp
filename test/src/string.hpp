@@ -13,8 +13,20 @@ assert(String("abc") != String("def"));
 
 // + operator
 {
+	assert(
+		(String("abc") + String("def")) ==
+		String("abcdef")
+	);
+
 	const str=String("abc") + String("def");
 	assert(str == String("abcdef"));
+
+	const lhs=String("lhs");
+	const rhs=String("rhs");
+
+	assert((lhs + String(" rhs")) == String("lhs rhs"));
+	assert((String("lhs ") + rhs) == String("lhs rhs"));
+	assert((lhs + rhs) == String("lhsrhs"));
 }
 
 // += operator
@@ -22,6 +34,12 @@ assert(String("abc") != String("def"));
 	let str=String("abc");
 	str+=String("def");
 	assert(str == String("abcdef"));
+
+	const def=String("def");
+	let tmp=String("abc");
+	tmp+=def;
+
+	assert(tmp == String("abcdef"));
 }
 
 // = operator
@@ -37,6 +55,10 @@ assert(!String("")); //falsey
 
 // stream (<<) operator
 std::cout << String("testing stream operator...\n");
+
+// index ([]) operator
+assert(String("abc")[1] == 'b');
+assert(String("─")[0] == U'─');
 
 assert(String("abc").charAt(1) == 'b');
 assert(String("─").charAt(0) == U'─');

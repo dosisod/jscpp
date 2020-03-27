@@ -17,12 +17,16 @@ public:
 
 	operator bool();
 
+	_String operator+(const _String& other) const;
 	_String& operator+(const _String& other);
+
 	_String& operator+=(const _String& other);
 
 	_String& operator=(const _String& other);
 
 	friend std::ostream& operator<<(std::ostream& out, const _String& str);
+
+	char32_t operator[](const unsigned int index) const;
 
 	char32_t charAt(const unsigned int index) const;
 
