@@ -15,6 +15,7 @@ jobs:
         cmake ..
     - name: Build
       run: |
+        cd build/
         make --version
         make
     - name: Run tests
