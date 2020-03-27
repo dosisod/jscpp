@@ -11,8 +11,11 @@ jobs:
       run: |
         mkdir build
         cd build
+        cmake --version
         cmake ..
     - name: Build
-      run: cmake --build .
+      run: |
+        make --version
+        make
     - name: Run tests
       run: ./test/Test
