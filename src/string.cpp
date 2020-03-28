@@ -18,12 +18,24 @@ bool _String::operator==(const _String& other) const {
 bool _String::operator==(const _String& other) {
 	return internal==other.internal;
 }
+bool _String::operator==(const std::string& other) const {
+	return internal==other;
+}
+bool _String::operator==(const std::string& other) {
+	return internal==other;
+}
 
 bool _String::operator!=(const _String& other) const {
 	return internal!=other.internal;
 }
 bool _String::operator!=(const _String& other) {
 	return internal!=other.internal;
+}
+bool _String::operator!=(const std::string& other) const {
+	return internal!=other;
+}
+bool _String::operator!=(const std::string& other) {
+	return internal!=other;
 }
 
 _String::operator bool() {
@@ -99,6 +111,50 @@ int _String::lastIndexOf(const std::string str) const {
 	return internal.find_last_of(str);
 }
 
+_String _String::padEnd(const unsigned int length) const {
+	return padEnd(length, " ");
+}
+
+_String _String::padEnd(const unsigned int length, std::string str) const {
+	if (internal.length() >= length) {
+		return _String(internal);
+	}
+
+	std::string ret=internal;
+	int total=length - ret.length();
+
+	for (unsigned int i=0; i < (total/str.length()) ; i++) {
+		ret+=str;
+	}
+
+	return _String(
+		ret+=str.substr(0, total % str.length())
+	);
+}
+
+_String _String::padStart(const unsigned int length) const {
+	return padStart(length, " ");
+}
+
+_String _String::padStart(const unsigned int length, std::string str) const {
+	if (internal.length() >= length) {
+		return _String(internal);
+	}
+
+	std::string ret="";
+	int total=length - internal.length();
+
+	for (unsigned int i=0; i < (total/str.length()) ; i++) {
+		ret+=str;
+	}
+
+	return _String(
+		ret +
+		str.substr(0, total % str.length()) +
+		internal
+	);
+}
+
 _String _String::repeat(const unsigned int count) const {
 	_String str=_String("");
 
@@ -109,8 +165,58 @@ _String _String::repeat(const unsigned int count) const {
 	return str;
 }
 
+_String _String::slice(int begin) const {
+	return slice(begin, internal.length());
+}
+
+_String _String::slice(int begin, int end) const {
+	if (begin < 0) {
+		begin=internal.length() + begin;
+	}
+	if (end < 0) {
+		end=internal.length() + end;
+	}
+
+	if (begin >= (int)internal.length()) {
+		return _String("");
+	}
+	else if (begin <= 0) {
+		return _String(internal.substr(0, end));
+	}
+	else {
+		return _String(internal.substr(begin, end - begin));
+	}
+}
+
 bool _String::startsWith(const std::string start) const {
 	return (internal.rfind(start, 0) == 0);
+}
+
+_String _String::substring(int begin) const {
+	return _String(substring(
+		begin,
+		internal.length()
+	));
+}
+
+_String _String::substring(int begin, int end) const {
+	if (begin < 0) begin=0;
+	if (end < 0) end=0;
+
+	if (begin > end) {
+		const int tmp=end;
+		end=begin;
+		begin=tmp;
+	}
+
+	if (begin > internal.length()) {
+		begin=internal.length();
+	}
+
+	return _String(internal.substr(
+		begin,
+		end - begin
+	));
 }
 
 _String& _String::toString() {

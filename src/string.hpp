@@ -12,9 +12,13 @@ public:
 
 	bool operator==(const _String& other) const;
 	bool operator==(const _String& other);
+	bool operator==(const std::string& other) const;
+	bool operator==(const std::string& other);
 
 	bool operator!=(const _String& other) const;
 	bool operator!=(const _String& other);
+	bool operator!=(const std::string& other) const;
+	bool operator!=(const std::string& other);
 
 	operator bool();
 
@@ -50,9 +54,21 @@ public:
 	int indexOf(const std::string str) const;
 	int lastIndexOf(const std::string str) const;
 
+	_String padEnd(const unsigned int length) const;
+	_String padEnd(const unsigned int length, std::string str) const;
+
+	_String padStart(const unsigned int length) const;
+	_String padStart(const unsigned int length, std::string str) const;
+
 	_String repeat(const unsigned int count) const;
 
+	_String slice(int begin) const;
+	_String slice(int begin, int end) const;
+
 	bool startsWith(const std::string start) const;
+
+	_String substring(int begin) const;
+	_String substring(int begin, int end) const;
 
 	_String& toString();
 	_String& valueOf();

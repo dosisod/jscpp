@@ -13,9 +13,11 @@ int errors=0;
 
 // == operator
 assert(String("abc") == String("abc"));
+assert(String("abc") == "abc");
 
 // != operator
 assert(String("abc") != String("def"));
+assert(String("abc") != "def");
 
 // + operator
 {
@@ -102,12 +104,45 @@ assert(String("abcabc").lastIndexOf("c") == 5);
 assert(String("abc").lastIndexOf("d") == -1);
 assert(String("abc").lastIndexOf("") == 3);
 
+assert(String("abc").padEnd(10) == String("abc").padEnd(10, " "));
+assert(String("abc").padEnd(1) == String("abc"));
+assert(String("abc").padEnd(6) == String("abc   "));
+assert(String("abc").padEnd(10, "foo") == String("abcfoofoof"));
+assert(String("abc").padEnd(9, "abc") == String("abcabcabc"));
+
+assert(String("abc").padStart(10) == String("abc").padStart(10, " "));
+assert(String("abc").padStart(1) == String("abc"));
+assert(String("abc").padStart(6) == String("   abc"));
+assert(String("abc").padStart(10, "foo") == String("foofoofabc"));
+assert(String("abc").padStart(6, "123456") == String("123abc"));
+
 assert(String("a").repeat(3) == String("aaa"));
 assert(String("b").repeat(0) == String(""));
+
+assert(String("abc").slice(0, 3) == String("abc").slice(0));
+assert(String("abc").slice(0) == String("abc"));
+assert(String("abc").slice(10) == String(""));
+assert(String("abc").slice(-10) == String("abc"));
+assert(String("abc").slice(1) == String("bc"));
+assert(String("abc").slice(0, -1) == String("ab"));
+assert(String("abc").slice(0, 2) == String("ab"));
+assert(String("abc").slice(1, 2) == String("b"));
+assert(String("hello world").slice(-10, 5) == String("ello"));
 
 assert(String("abc").startsWith("a"));
 assert(String("abc").startsWith(""));
 assert(!String("abc").startsWith("c"));
+
+assert(String("hello").substring(0) == String("hello").substring(0, 5));
+assert(String("hello").substring(0) == String("hello"));
+assert(String("abc").substring(1) == String("bc"));
+assert(String("abc").substring(0, 1) == String("abc").substring(1, 0));
+assert(String("abc").substring(-2) == String("abc").substring(0));
+assert(String("abc").substring(3, -2) == String("abc").substring(3, 0));
+assert(String("abc").substring(1, 1) == String(""));
+assert(String("abc").substring(1, 2) == String("b"));
+assert(String("abc").substring(0, 100) == String("abc"));
+assert(String("abc").substring(5, 100) == String(""));
 
 assert(String("abc").toString() == String("abc"));
 
