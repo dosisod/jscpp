@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <codecvt>
 #include <string>
 #include <locale>
@@ -70,7 +71,12 @@ public:
 	_String substring(int begin) const;
 	_String substring(int begin, int end) const;
 
+	_String toLowerCase() const;
+
 	_String& toString();
+
+	_String toUpperCase() const;
+
 	_String& valueOf();
 
 	std::string internal="";

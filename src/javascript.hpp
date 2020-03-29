@@ -3,6 +3,10 @@
 #include "console.hpp"
 Console console;
 
+void clear() {
+	console.clear();
+}
+
 #include "math.hpp"
 _Math Math;
 
@@ -24,3 +28,6 @@ _String String=_String("");
 
 //emulate JS finally keyword
 #define finally
+
+//allow for lower case NULL
+#define null NULL

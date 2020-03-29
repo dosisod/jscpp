@@ -46,5 +46,7 @@ int testKeywords() {
 	}
 }
 
+	assert(null == NULL);
+
 	return errors;
 }

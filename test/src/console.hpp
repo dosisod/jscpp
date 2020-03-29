@@ -9,5 +9,7 @@ void testConsole() {
 	console.warn("this", "is", "a", "warning");
 	console.error("this", "is", "a", "error");
 
+	//both calls are equivalent
 	console.clear();
+	clear();
 }

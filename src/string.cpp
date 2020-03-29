@@ -219,6 +219,26 @@ _String _String::substring(int begin, int end) const {
 	));
 }
 
+_String _String::toLowerCase() const {
+	std::string ret=internal;
+
+	std::transform(ret.begin(), ret.end(), ret.begin(), [](char c){
+		return std::tolower(c);
+	});
+
+	return ret;
+}
+
+_String _String::toUpperCase() const {
+	std::string ret=internal;
+
+	std::transform(ret.begin(), ret.end(), ret.begin(), [](char c){
+		return std::toupper(c);
+	});
+
+	return ret;
+}
+
 _String& _String::toString() {
 	return *this;
 }

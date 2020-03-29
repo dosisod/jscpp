@@ -144,7 +144,11 @@ assert(String("abc").substring(1, 2) == String("b"));
 assert(String("abc").substring(0, 100) == String("abc"));
 assert(String("abc").substring(5, 100) == String(""));
 
+assert(String("ABC").toLowerCase() == String("abc"));
+
 assert(String("abc").toString() == String("abc"));
+
+assert(String("abc").toUpperCase() == String("ABC"));
 
 assert(String("abc").valueOf() == String("abc"));
 
