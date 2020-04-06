@@ -13,6 +13,8 @@ _Math Math;
 #include "string.hpp"
 _String String=_String("");
 
+#include "ui.hpp"
+
 //allows for const, var, and let
 #define const const auto
 #define var auto

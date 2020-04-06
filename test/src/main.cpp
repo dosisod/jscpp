@@ -3,6 +3,7 @@
 #include "console.hpp"
 #include "string.hpp"
 #include "math.hpp"
+#include "ui.hpp"
 
 int main() {
 	int errors=0;
@@ -14,6 +15,7 @@ int main() {
 	errors+=testMath();
 	errors+=testKeywords();
 	errors+=testString();
+	errors+=testUI();
 
 	if (errors == 1) {
 		std::cout << "1 error occurred.\n";
